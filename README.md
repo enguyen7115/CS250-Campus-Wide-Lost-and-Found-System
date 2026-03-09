@@ -1,5 +1,6 @@
 # CS250---Campus-Wide-Lost-and-Found-System
 Overview
+
 The Lost and Found Reporting System is a web-based application that allows users to report lost items, search for found items, and communicate with others to recover belongings. The project demonstrates full-stack development, database integration, and basic AI-assisted matching.
 
 # Features
