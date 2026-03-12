@@ -1,0 +1,35 @@
+.form-input {
+    color: black;
+    border: 1px solid #ccc;
+    min-height: 25px;
+    border-radius: 5px;
+    text-indent: 10px;
+    max-width: 100%;
+    font-size: 20px;
+    margin-bottom: 20px;
+    display: block;
+}
+.input-submit {
+    color: white;
+    background-color: #007BFF;
+    min-height: 25px;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.form-container {
+    border: 1px solid grey;
+    background-color: white;
+    padding: 10vh;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-color: coral;
+}

@@ -1,14 +1,16 @@
+import './signup.css';
+
 export default function Dashboard() {
     return (
-        <div>
-            <h1>Lost & Found Signup</h1>
-            <form style={{ maxWidth: 400,  }}>
-                <input type="text" placeholder="First Name" minLength="2" maxLength="20" style={{ display: "block", marginBottom: 10 }} />
-                <input type="text" placeholder="Last Name" minLength="2" maxLength="20" style={{ display: "block", marginBottom: 10 }} />
-                <input type="email" placeholder="Email" style={{ display: "block", marginBottom: 10 }} />
-                <input type="password" placeholder="Password" minLength="6" style={{ display: "block", marginBottom: 10 }} />
-                <input type="password" placeholder="Confirm Password" minLength="6" style={{ display: "block", marginBottom: 10 }} />
-                <input type="submit" value="Signup" style={{ display: "block", marginBottom: 10 }} />
+        <div className="signup-container">
+            <form className="form-container">
+                <h1>Create an account</h1>
+                <input className="form-input" type="text" placeholder="First Name" minLength="1" maxLength="20" />
+                <input className="form-input" type="text" placeholder="Last Name" minLength="1" maxLength="20" />
+                <input className="form-input" type="email" placeholder="Email" />
+                <input className="form-input" type="password" placeholder="Password" minLength="10" />
+                <input className="form-input" type="password" placeholder="Confirm Password" minLength="10" />
+                <input className="input-submit" type="submit" value="Create Account" />
             </form>
         </div>
     );
