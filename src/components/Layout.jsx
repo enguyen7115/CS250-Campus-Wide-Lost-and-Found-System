@@ -16,6 +16,7 @@ export default function Layout({ children }) {
                 <Link to="/search">Search</Link>
                 <Link to="/report">Report</Link>
                 <Link to="/dashboard">Dashboard</Link>
+                <Link to="/signup">Signup</Link>
             </nav>
 
             <div style={{ padding: "0 20px" }}>{children}</div>
