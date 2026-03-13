@@ -5,9 +5,8 @@ export default function Layout({ children }) {
         <div>
             <nav
                 style={{
-                    padding: "12px 20px",
+                    padding: "2vh 20px",
                     borderBottom: "1px solid #ccc",
-                    marginBottom: 20,
                     display: "flex",
                     gap: 20,
                 }}
@@ -19,7 +18,7 @@ export default function Layout({ children }) {
                 <Link to="/signup">Signup</Link>
             </nav>
 
-            <div style={{ padding: "0 20px" }}>{children}</div>
+            <div>{children}</div>
         </div>
     );
 }
