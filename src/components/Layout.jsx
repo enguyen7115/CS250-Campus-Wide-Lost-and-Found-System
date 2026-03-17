@@ -5,7 +5,7 @@ export default function Layout({ children }) {
         <div>
             <nav
                 style={{
-                    padding: "2vh 20px",
+                    padding: "12px 20px",
                     borderBottom: "1px solid #ccc",
                     display: "flex",
                     gap: 20,
