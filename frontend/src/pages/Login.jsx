@@ -1,6 +1,6 @@
 import "./login.css";
 
-export default function Dashboard() {
+export default function Login() {
   return (
     <div className="login-container">
       <form className="form-container">

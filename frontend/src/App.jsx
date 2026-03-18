@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
-import Layout from "./src/components/Layout";
-import Home from "./src/pages/Home";
-import Search from "./src/pages/Search";
-import Report from "./src/pages/Report";
-import Dashboard from "./src/pages/Dashboard";
-import Login from "./src/pages/Login";
+import Layout from "../src/components/Layout";
+import Home from "../src/pages/Home";
+import Search from "../src/pages/Search";
+import Report from "../src/pages/Report";
+import Dashboard from "../src/pages/Dashboard";
+import Login from "../src/pages/Login";
 
 export default function App() {
   return (
