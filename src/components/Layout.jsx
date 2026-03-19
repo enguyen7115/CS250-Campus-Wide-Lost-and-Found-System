@@ -16,6 +16,7 @@ export default function Layout({ children }) {
                 <Link to="/report">Report</Link>
                 <Link to="/dashboard">Dashboard</Link>
                 <Link to="/signup">Signup</Link>
+                <Link to="/login">Login</Link>
             </nav>
 
             <div>{children}</div>

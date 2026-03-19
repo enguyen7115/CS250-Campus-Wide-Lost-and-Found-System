@@ -1,7 +1,7 @@
 import './signup.css';
-import axios from 'axios'
 import { useState } from 'react';
-import validator from 'validator';
+import axios from 'axios'
+import validator from 'validator'
 
 function signupUser(e) {
     e.preventDefault()
@@ -15,29 +15,29 @@ function signupUser(e) {
                 email: e.target[2].value,
                 password: e.target[3].value,
             }
-        }).then((response) => {
-            console.log('API Response:', response.data);
-        })
-        .catch((error) => {
-            console.error('API Error:', error);
+        }).catch((error) => {
+            if (error.response) {
+                alert(error.response.data.message);
+            } else {
+                alert('An error occurred during signup. Please try again later.');
+            }
         });
     }
 }
 
 function hasValidFields(e) {
-    e.preventDefault()
     if (!validator.isEmail(e.target[2].value)) {
         alert("Please enter a valid email address.");
         return false;
     }
     if (e.target[3].value !== e.target[4].value) {
         alert("Passwords do not match!");
-        return false;
+        return false;           
     }
-    return true;
+    return true
 }
 
-export default function Dashboard() {
+export default function Signup() {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -46,14 +46,14 @@ export default function Dashboard() {
 
     return (
         <div className="signup-container">
-            <form className="form-container" onSubmit={signupUser}>
-                <h1>Create an account</h1>
-                <input className="form-input" type="text" placeholder="First Name" minLength="1" maxLength="20" value={firstName} onChange={(e) => setFirstName(e.target.value)} required/>
-                <input className="form-input" type="text" placeholder="Last Name" minLength="1" maxLength="20" value={lastName} onChange={(e) => setLastName(e.target.value)} required/>
-                <input className="form-input" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
-                <input className="form-input" type="password" placeholder="Password" minLength="6" value={password} onChange={(e) => setPassword(e.target.value)} required/>
-                <input className="form-input" type="password" placeholder="Confirm Password" minLength="6" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
-                <input className="input-submit" type="submit" value="Create Account" />
+            <form className="signup-form-container" onSubmit={signupUser}>
+                <h1 className='signup-title'>Create an account</h1>
+                <input className="signup-form-input" type="text" placeholder="First Name" minLength="1" maxLength="20" value={firstName} onChange={(e) => setFirstName(e.target.value)} required/>
+                <input className="signup-form-input" type="text" placeholder="Last Name" minLength="1" maxLength="20" value={lastName} onChange={(e) => setLastName(e.target.value)} required/>
+                <input className="signup-form-input" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
+                <input className="signup-form-input" type="password" placeholder="Password" minLength="10" value={password} onChange={(e) => setPassword(e.target.value)} required/>
+                <input className="signup-form-input" type="password" placeholder="Confirm Password" minLength="10" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
+                <input className="signup-form-submit" type="submit" value="Create Account" />
                 <a className="login-link" href="/login">Already have an account? Log in here.</a>
             </form>
         </div>

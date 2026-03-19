@@ -1,4 +1,4 @@
-.form-input {
+.signup-form-input {
     color: black;
     border: 1px solid #ccc;
     min-height: 25px;
@@ -10,8 +10,7 @@
     display: block;
     background-color: white;
 }
-
-.input-submit {
+.signup-form-submit {
     color: white;
     background-color: #007BFF;
     min-height: 25px;
@@ -20,7 +19,7 @@
     cursor: pointer;
     margin-bottom: 10px;
 }
-.form-container {
+.signup-form-container {
     border: 1px solid grey;
     background-color: white;
     padding: 10vh;
@@ -33,11 +32,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
     height: 93vh;
 }
 
-h1 {
+.signup-title {
     color: black
 }
 
