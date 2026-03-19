@@ -5,7 +5,6 @@
     "backend": "cd backend && npm run start"
   },
   "dependencies": {
-    "firebase": "^12.10.0",
     "firebase-admin": "^13.7.0"
   }
 }
