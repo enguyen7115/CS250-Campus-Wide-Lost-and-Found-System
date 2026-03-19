@@ -1,5 +1,5 @@
 .login-form-input {
-    color: black;
+    color: #000000;
     border: 1px solid #ccc;
     min-height: 25px;
     border-radius: 5px;
@@ -8,45 +8,35 @@
     font-size: 20px;
     margin-bottom: 20px;
     display: block;
-    align-self: center;
-    background-color: #242424;
+    background-color: white;
 }
-
 .login-form-submit {
-    color: #ffffff;
-    background-color: #007BFF;
+    color: #000000;
+    background-color: #CDCDC8;
     min-height: 25px;
     border-radius: 5px;
     font-size: 20px;
     cursor: pointer;
-    min-width: 25%;
-    max-width:100%;
-    align-self: center;
+    margin-bottom: 10px;
 }
-
 .login-form-container {
-    border: 2px solid #ffffff;
-    background-color: #242424;
-    padding: 20vh;
-    border-radius: 15px;
+    border: 1px solid #000000;
+    background-color: #2D2828;
+    padding: 10vh;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    gap: 25px;
 }
-
 .login-container {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    background-color: #242424;
-    box-sizing: border-box;
-    padding-top: 10vh;
+    align-items: center;
     height: 93vh;
+    background-color: #A6192E
 }
 
 .login-title {
-    color: whitesmoke;
-    align-self: center;
-    margin-bottom: 50px;
+    color: whitesmoke
 }
+

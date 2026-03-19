@@ -1,4 +1,4 @@
-.signup-form-input {
+.report-form-input {
     color: #000000;
     border: 1px solid #ccc;
     min-height: 25px;
@@ -10,7 +10,19 @@
     display: block;
     background-color: white;
 }
-.signup-form-submit {
+.report-form-desc {
+    color: #000000;
+    border: 1px solid #ccc;
+    display: block;
+    background-color: white;
+    border-radius: 5px;
+    max-width: 100%;
+    margin-bottom: 20px;
+    min-height: 100px;
+    font-size: 15px;
+    overflow: hidden;
+}
+.report-form-submit {
     color: #000000;
     background-color: #CDCDC8;
     min-height: 25px;
@@ -19,7 +31,7 @@
     cursor: pointer;
     margin-bottom: 10px;
 }
-.signup-form-container {
+.report-form-container {
     border: 1px solid #000000;
     background-color: #2D2828;
     padding: 10vh;
@@ -28,7 +40,7 @@
     justify-content: center;
     flex-direction: column;
 }
-.signup-container {
+.report-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,7 +48,6 @@
     background-color: #A6192E
 }
 
-.signup-title {
+.report-title {
     color: whitesmoke
 }
-

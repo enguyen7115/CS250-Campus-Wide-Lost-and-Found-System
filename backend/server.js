@@ -2,28 +2,22 @@ import express from "express";
 import path from 'path'
 import cors from 'cors'
 import { fileURLToPath } from 'url'
-import validator from 'validator'
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs, setDoc, updateDoc, deleteDoc, getDoc, addDoc, serverTimestamp, doc } from 'firebase/firestore';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { initializeApp, cert } from "firebase-admin/app";
+import serviceAccount from '/Users/munewerkiar/Desktop/App_Dev/credentials/serviceAccount.json' assert { type: 'json' };
+import { getFirestore } from "firebase-admin/firestore";
+import { getAuth } from "firebase-admin/auth";
 import dotenv from 'dotenv'
 dotenv.config()
 
 const app = express();
 const port = 3000;
 
-const firebaseConfig = {
-  apiKey: process.env.apiKey,
-  authDomain: process.env.authDomain,
-  projectId: process.env.projectId,
-  storageBucket: process.env.storageBucket,
-  messagingSenderId: process.env.messagingSenderId,
-  appId: process.env.appId
-};
+initializeApp({
+  credential: cert(serviceAccount)
+})
 
-const webApp = initializeApp(firebaseConfig)
-const db = getFirestore(webApp)
-const auth = getAuth(webApp)
+const db = getFirestore()
+const auth = getAuth()
 
 app.use(cors())
 app.use(express.json());
@@ -36,40 +30,25 @@ app.get("/", (req, res) => {
 });
 
 app.post('/api/signup', async (req, res) => {
-  const isJSON = res.header('Content-Type', 'application/json');
-  if (!isJSON) {  
-    res.status(400).json({ message: 'Invalid JSON format' });
+  const bearerToken = req.headers.authorization
+  if (!bearerToken || !bearerToken.startsWith('Bearer ')) {
+    res.status(401).json({ message: 'Unauthorized' });
     return;
   }
-  if (hasValidRequest(req)) {
-    try {
-      const userCredential = await createUserWithEmailAndPassword(auth, req.body.email, req.body.password);
-      const userData = {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email
-      };
-      await createUserDocument(userData, userCredential.user.uid);
-      console.log('User created with UID: ', userCredential.user.uid);
-    } catch (error) {
-      if (error.code === 'auth/email-already-in-use') {
-        res.status(400).json({ message: 'Email already in use' });
-        return;
-      }
-      res.status(500).json({ message: 'Error creating user' });
-      return;
-    }
-    res.json({ message: 'Signup successful' });
-    return;
-  } else {
-    res.json({ message: 'Invalid signup json data'})
+  const idToken = bearerToken.split(' ')[1];
+  try {
+    const decodedToken = await auth.verifyIdToken(idToken);
+    console.log('User signed up with UID: ', decodedToken.uid);
+    res.status(200).json({ message: 'User signed up successfully' });
+  } catch (error) {
+    console.log('Error verifying ID token: ', error);
+    res.status(401).json({ message: 'Unauthorized' });
     return;
   }
 })
 
-app.post('/api/login', (req, res) => {
-  console.log('Received login data:', req.body);
-  res.json({ message: 'Login successful' });
+app.post('/api/login', async (req, res) => {
+  
 })
 
 app.use((req, res) => {
@@ -79,40 +58,3 @@ app.use((req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
-
-function hasValidRequest(request) {
-  if (!request.body.firstName || !request.body.lastName || !request.body.email || !request.body.password) {
-    console.log('Missing required fields');
-    return false;
-  }
-  if (typeof request.body.firstName !== 'string' || typeof request.body.lastName !== 'string' || typeof request.body.email !== 'string' || typeof request.body.password !== 'string') {
-    console.log('Invalid data types');
-    return false;
-  }
-  if (request.body.firstName.length < 1 || request.body.firstName.length > 20) {
-    console.log('Invalid first name length');
-    return false;
-  }
-  if (request.body.lastName.length < 1 || request.body.lastName.length > 20) {
-    console.log('Invalid last name length');
-    return false;
-  }
-  if (!validator.isEmail(request.body.email)) {
-    console.log('Invalid email format');
-    return false;
-  }
-  if (request.body.password.length < 10) {
-    console.log('Password too short');
-    return false
-  }
-  return true;
-}
-
-async function createUserDocument(user, uid) {
-  const docRef = await setDoc(doc(db, "users", uid), {
-    firstName: user.firstName,
-    lastName: user.lastName,
-    email: user.email,
-    createdAt: serverTimestamp()
-  });
-}
