@@ -12,20 +12,20 @@ import { onAuthStateChanged } from "firebase/auth";
 import { clientAuth } from "./firebase";
 
 export default function App() {
-    const [currentUser, setCurrentUser] = useState(null)
+    const [loginState, setLoginState] = useState(null);
 
     useEffect(() => {
         onAuthStateChanged(clientAuth, async (user) => {
             if (user) {
-                setCurrentUser(user)
+                setLoginState(true)
             } else {
-                setCurrentUser(null)
+                setLoginState(false)
             }
         })
     })
 
     return (
-        <UserContext.Provider value={{currentUser, setCurrentUser}}>
+        <UserContext.Provider value={{loginState, setLoginState}}>
             <Layout>
                 <Routes>
                     <Route path="/" element={<Home />} />

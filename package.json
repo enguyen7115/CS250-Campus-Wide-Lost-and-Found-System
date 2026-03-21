@@ -17,6 +17,7 @@
     "express": "^5.2.1",
     "firebase": "^12.10.0",
     "firebase-admin": "^13.7.0",
+    "module": "^2.0.0",
     "path": "^0.12.7",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

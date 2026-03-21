@@ -4,7 +4,7 @@ import { UserContext } from "../userState";
 import { signout } from "../firebase.js";
 
 export default function Layout({ children }) {
-    const { currentUser, setCurrentUser } = useContext(UserContext)
+    const { loginState, setLoginState } = useContext(UserContext)
     return (
         <div>
             <nav
@@ -17,19 +17,13 @@ export default function Layout({ children }) {
             >
                 <Link to="/">Home</Link>
                 <Link to="/search">Search</Link>
-                <Link to="/report">Report</Link>
-                <Link to="/dashboard">Dashboard</Link>
-                {currentUser ? '' : 
-                    <>
-                    <Link to="/signup">Signup</Link>
-                    <Link to="/login">Login</Link>
-                </>
-                }
+                {loginState ? <><Link to="/report">Report</Link>
+                <Link to="/dashboard">Dashboard</Link></> : ''}
                 <div style={{ marginLeft: "auto" }}></div>
-                {currentUser ? 
+                {loginState ? 
                     <>
                     <label className='signout-label' onClick={signout}>Sign Out</label>
-                    </> : '' 
+                    </> : <><Link to="/login">Login</Link></>
                 }
             </nav>
 

@@ -13,8 +13,8 @@ export default function Signup() {
         <div className="signup-container">
             <form className="signup-form-container" onSubmit={signup}>
                 <h1 className='signup-title'>Create an account</h1>
-                <input className="signup-form-input" name='first-name' type="text" placeholder="First Name" minLength="1" maxLength="20" value={firstName} onChange={(e) => setFirstName(e.target.value)} required/>
-                <input className="signup-form-input" name='last-name' type="text" placeholder="Last Name" minLength="1" maxLength="20" value={lastName} onChange={(e) => setLastName(e.target.value)} required/>
+                <input className="signup-form-input" name='firstName' type="text" placeholder="First Name" minLength="1" maxLength="20" value={firstName} onChange={(e) => setFirstName(e.target.value)} required/>
+                <input className="signup-form-input" name='lastName' type="text" placeholder="Last Name" minLength="1" maxLength="20" value={lastName} onChange={(e) => setLastName(e.target.value)} required/>
                 <input className="signup-form-input" name='email' type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
                 <input className="signup-form-input" name='password' type="password" placeholder="Password" minLength="10" value={password} onChange={(e) => setPassword(e.target.value)} required/>
                 <input className="signup-form-input" name='confirm-password' type="password" placeholder="Confirm Password" minLength="10" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
