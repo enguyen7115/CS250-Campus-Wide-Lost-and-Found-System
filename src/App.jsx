@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
@@ -30,10 +30,10 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/search" element={<Search />} />
-                    <Route path="/report" element={<Report />} />
-                    <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="/signup" element={<Signup />} />
-                    <Route path="/login" element={<Login />} />
+                    <Route path="/report" element={loginState ? <Report /> : <Navigate to= "/login" />} />
+                    <Route path="/dashboard" element={loginState ? <Dashboard /> : <Navigate to="/login" />} />
+                    <Route path="/signup" element={loginState ? <Navigate to= "/" /> : <Signup />} />
+                    <Route path="/login" element={loginState ? <Navigate to= "/" /> : <Login />} />
                 </Routes>
             </Layout>
         </UserContext.Provider>

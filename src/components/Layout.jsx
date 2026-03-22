@@ -17,8 +17,11 @@ export default function Layout({ children }) {
             >
                 <Link to="/">Home</Link>
                 <Link to="/search">Search</Link>
-                {loginState ? <><Link to="/report">Report</Link>
-                <Link to="/dashboard">Dashboard</Link></> : ''}
+                {loginState ? 
+                <><Link to="/report">Report</Link>
+                <Link to="/dashboard">Dashboard</Link></> 
+                : ''
+                }
                 <div style={{ marginLeft: "auto" }}></div>
                 {loginState ? 
                     <>

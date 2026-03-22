@@ -25,11 +25,6 @@ app.use(cors());
 app.use(express.json());
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-app.use(express.static(path.join(__dirname, "../dist")));
-
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../dist", "index.html"));
-});
 
 app.post("/api/signup", async (req, res) => {
   const bearerToken = req.headers.authorization;
@@ -114,13 +109,7 @@ app.post('/api/user/add-item', async (req, res) =>  {
   }
 })
 
-app.get('/dashboard', async (res, req) => {
-  try {
-    auth.user
-  } catch {
-    res.send('Unable to retrieve your dashboard')
-  }
-})
+app.use(express.static(path.join(__dirname, "../dist")));
 
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, "../dist", "index.html"));
