@@ -1,4 +1,4 @@
-.login-form-input {
+.signup-form-input {
     color: #000000;
     border: 1px solid #ccc;
     min-height: 25px;
@@ -10,7 +10,7 @@
     display: block;
     background-color: white;
 }
-.login-form-submit {
+.signup-form-submit {
     color: #000000;
     background-color: #CDCDC8;
     min-height: 25px;
@@ -19,7 +19,7 @@
     cursor: pointer;
     margin-bottom: 10px;
 }
-.login-form-container {
+.signup-form-container {
     border: 1px solid #000000;
     background-color: #2D2828;
     padding: 10vh;
@@ -28,7 +28,7 @@
     justify-content: center;
     flex-direction: column;
 }
-.login-container {
+.signup-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,6 +36,6 @@
     background-color: #A6192E
 }
 
-.login-title {
+.signup-title {
     color: whitesmoke
 }

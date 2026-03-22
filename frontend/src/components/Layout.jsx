@@ -1,27 +1,36 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../userState.jsx";
+import { signout } from "../firebase.js";
 
 export default function Layout({ children }) {
-  return (
-    <div>
-      <nav
-        style={{
-          padding: "12px 20px",
-          borderBottom: "1px solid #ccc",
-          marginBottom: 20,
-          display: "flex",
-          gap: 20,
-        }}
-      >
-        <Link to="/">Home</Link>
-        <Link to="/search">Search</Link>
-        <Link to="/report">Report</Link>
-        <Link to="/dashboard">Dashboard</Link>
-        <Link to="/login" style={{ padding: "0px 1150px" }}>
-          Login
-        </Link>
-      </nav>
+    const { loginState, setLoginState } = useContext(UserContext)
+    return (
+        <div>
+            <nav
+                style={{
+                    padding: "12px 20px",
+                    borderBottom: "1px solid #ccc",
+                    display: "flex",
+                    gap: 20,
+                }}
+            >
+                <Link to="/">Home</Link>
+                <Link to="/search">Search</Link>
+                {loginState ? 
+                <><Link to="/report">Report</Link>
+                <Link to="/dashboard">Dashboard</Link></> 
+                : ''
+                }
+                <div style={{ marginLeft: "auto" }}></div>
+                {loginState ? 
+                    <>
+                    <label className='signout-label' onClick={signout}>Sign Out</label>
+                    </> : <><Link to="/login">Login</Link></>
+                }
+            </nav>
 
-      <div style={{ padding: "0 20px" }}>{children}</div>
-    </div>
-  );
+            <div>{children}</div>
+        </div>
+    );
 }
