@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { UserContext } from "../userState";
+import { UserContext } from "../userState.jsx";
 import { signout } from "../firebase.js";
 
 export default function Layout({ children }) {

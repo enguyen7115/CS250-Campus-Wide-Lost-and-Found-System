@@ -53,18 +53,19 @@ app.post("/api/signup", async (req, res) => {
 app.post("/api/login", async (req, res) => {
   const bearerToken = req.headers.authorization;
   if (!bearerToken || !bearerToken.startsWith("Bearer ")) {
-    res.status(401).json({ message: "Unauthorized" });
-    return;
+    return res.status(401).json({ message: "Unauthorized" });
   }
   const idToken = bearerToken.split(" ")[1];
   try {
     const decodedToken = await auth.verifyIdToken(idToken);
-    console.log("User Logged in with UID: ", decodedToken.uid);
-    res.status(200).json({ message: "User logged in successfully" });
+    console.log("User Logged in with UID:", decodedToken.uid);
+    return res.status(200).json({
+      message: "User logged in successfully",
+      uid: decodedToken.uid,
+    });
   } catch (error) {
-    console.log("Error verifying ID token: ", error);
-    res.status(401).json({ message: "Unauthorized" });
-    return;
+    console.log("Error verifying ID token:", error);
+    return res.status(401).json({ message: "Unauthorized" });
   }
 });
 

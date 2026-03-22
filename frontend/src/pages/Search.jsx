@@ -71,7 +71,7 @@ export default function Search() {
   }
 
   return (
-    <div style={{ padding: "2rem", maxWidth: "1100px", margin: "0 auto" }}>
+    <div style={{ padding: "2rem", margin: "0 auto", backgroundColor: "#a6192e", height: "85vh", color: "#000000" }}>
       <h1>Search Items</h1>
       <p>Search reported lost and found items using filters.</p>
 
@@ -144,7 +144,7 @@ export default function Search() {
       </form>
 
       {loading && <p>Loading results...</p>}
-      {error && <p style={{ color: "crimson" }}>{error}</p>}
+      {error && <p style={{ color: "#000000", fontWeight: "bold" }}>{error}</p>}
 
       {!loading && !error && (
         <div style={{ display: "grid", gap: "1rem" }}>

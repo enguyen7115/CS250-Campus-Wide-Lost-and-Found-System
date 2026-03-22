@@ -1,14 +1,16 @@
 import "./login.css";
 import { useState } from "react";
 import { login } from "../firebase.js";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate()
 
   return (
     <div className="login-container">
-      <form className="login-form-container" onSubmit={login}>
+      <form className="login-form-container" onSubmit={(e) => login(e, navigate)}>
         <h1 className="login-title">Log in to your account</h1>
         <input
           className="login-form-input"

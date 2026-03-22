@@ -25,11 +25,12 @@ const clientAuth = getAuth(webApp);
 
 setPersistence(clientAuth, browserSessionPersistence);
 
-function login(e) {
+function login(e, navigate) {
   e.preventDefault();
   const form = e.target;
   const email = form.email.value;
   const password = form.password.value;
+
   signInWithEmailAndPassword(clientAuth, email, password)
     .then(async (userCredential) => {
       const idToken = await userCredential.user.getIdToken();
@@ -41,7 +42,7 @@ function login(e) {
           "Content-Type": "application/json",
         },
       });
-      window.location.href = "/";
+      navigate('/')
     })
     .catch((error) => {
       if (error.code === "auth/invalid-credential") {
@@ -74,7 +75,7 @@ function signup(e) {
           email: form.email.value,
         },
       });
-      window.location.href = "/";
+      window.location.href = '/'
     })
     .catch((error) => {
       if (error.code === "auth/email-already-in-use") {
@@ -83,7 +84,6 @@ function signup(e) {
       }
       console.log("Error signing up user: ", error);
       alert("Error creating user");
-      window.location.href = "/";
       return;
     });
 }
@@ -91,7 +91,7 @@ function signup(e) {
 function signout() {
   try {
     signOut(clientAuth).then(() => {
-      window.location.href = "/";
+      window.location.href = '/'
     });
   } catch (error) {
     alert("Error signing out user");
@@ -119,7 +119,7 @@ async function addReportedItem(e) {
         room_num: form.room_num.value,
       },
     }).then((response) => console.log(response.data));
-    window.location.href = "/dashboard";
+    window.location.href = '/dashboard'
   } catch (error) {
     alert("Error adding item to user");
     return;
