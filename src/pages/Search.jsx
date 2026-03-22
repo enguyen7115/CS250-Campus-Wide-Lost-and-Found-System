@@ -92,7 +92,11 @@ export default function Search() {
           onChange={handleChange}
         />
 
-        <select name="category" value={filters.category} onChange={handleChange}>
+        <select
+          name="category"
+          value={filters.category}
+          onChange={handleChange}
+        >
           <option value="">All categories</option>
           <option value="electronics">Electronics</option>
           <option value="clothing">Clothing</option>
@@ -159,12 +163,24 @@ export default function Search() {
                 }}
               >
                 <h3 style={{ marginTop: 0 }}>{item.title}</h3>
-                <p><strong>Description:</strong> {item.description || "N/A"}</p>
-                <p><strong>Category:</strong> {item.category || "N/A"}</p>
-                <p><strong>Color:</strong> {item.color || "N/A"}</p>
-                <p><strong>Location:</strong> {item.location_found || "N/A"}</p>
-                <p><strong>Status:</strong> {item.status || "N/A"}</p>
-                <p><strong>Date:</strong> {item.date_reported || "N/A"}</p>
+                <p>
+                  <strong>Description:</strong> {item.description || "N/A"}
+                </p>
+                <p>
+                  <strong>Category:</strong> {item.category || "N/A"}
+                </p>
+                <p>
+                  <strong>Color:</strong> {item.color || "N/A"}
+                </p>
+                <p>
+                  <strong>Location:</strong> {item.location_found || "N/A"}
+                </p>
+                <p>
+                  <strong>Status:</strong> {item.status || "N/A"}
+                </p>
+                <p>
+                  <strong>Date:</strong> {item.date_reported || "N/A"}
+                </p>
               </div>
             ))
           )}
